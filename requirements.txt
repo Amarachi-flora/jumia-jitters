@@ -6,3 +6,6 @@ seaborn
 scikit-learn
 imblearn
 openpyxl
+streamlit
+pandas
+plotly
