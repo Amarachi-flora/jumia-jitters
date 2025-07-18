@@ -171,6 +171,12 @@ streamlit run dashboard.py
 
 Filters and charts will auto-update based on region and product category selections.
 
+##  Live Demo
+
+You can explore the dashboard live here:  
+👉 [Click here to view the live Streamlit app](https://jumia-jitters.streamlit.app/)
+
+
 
  Future Work
 Refine fraud detection using deep learning techniques (e.g., transformer-based NLP)
