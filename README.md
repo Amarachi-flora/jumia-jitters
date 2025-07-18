@@ -1,86 +1,14 @@
 
-#  Dataverse Africa July Challenge 2025  
-**Theme:** E-Commerce Logistics, Seller Risk Profiling, and Review Fraud Detection  
-**Project Title:** Jumia Jitters  
 
----
-
-##  Introduction
-
-This project addresses key operational and trust issues faced by **AfriMarket**, a fictional e-commerce platform operating in Nigeria and Ghana. The analysis focuses on identifying seller fraud, improving delivery performance, detecting suspicious reviews, and recommending strategies to restore customer confidence.
-
----
-
-##  Dataset Overview
-
-The dataset includes a 3-month log of AfriMarket transactions with the following features:
-
-- **Order metadata:** order ID, dates (order, dispatch, delivery)  
-- **Seller & product info:** seller ID, product category, price, quantity  
-- **Logistics info:** warehouse zone, delivery method, customer region  
-- **Feedback & quality:** customer rating, review text, sentiment score, return flag, complaint code  
-
----
-
-##  Task 1: Data Cleaning & Feature Engineering
-
-**Goals:**
-- Standardize entries and fill missing values
-- Engineer features such as:
-  - Delivery delay
-  - Seller performance metrics
-  - Suspicious review flags
-  - Seller Risk Score (weighted formula using return rate, complaint rate, rating penalty, delay)
-
-**Outcome:**  
-Cleaned dataset with new performance metrics for each seller, stored in `cleaned_jumia_data.csv`.
-
----
-
-##  Task 2: Pattern Surveillance
-
-**Goals:**
-- Explore trends using visual analytics
-- Identify high-risk categories, regions, and seller behavior patterns
-
-**Key Insights & Recommendations:**
-- Standard and Express delivery methods dominate → optimize for them  
-- Electronics and Fashion categories drive both sales and complaints → monitor closely  
-- Greater Accra and Lagos are top buyer regions → strengthen logistics in these zones  
-- Some sellers rely on short/fake reviews → include in fraud scoring  
-
-**Statistical Test:**  
-ANOVA confirmed that delivery method does not significantly affect customer ratings.
-
----
-
-##  Task 3: Prediction & Risk Modeling
-
-**Goals:**
-- Predict likelihood of returns using seller/product features  
-- Flag risky sellers using classification model and sentiment-enhanced analysis  
-
-**Model Highlights:**
-- **Random Forest Classifier**
-- **SMOTE** used for class imbalance
-- **AUC Score:** 0.8588
-- **Key Risk Drivers:** Complaint rate, return flag, review sentiment, delivery delay
-
-**High-Risk Sellers Flagged:**
-
-S014 – 0.90
-S041 – 0.89
-S018 – 0.86
-
-
-
----
 
 ##  Task 4: Strategy & Resolution
 
 ###  Streamlit Interactive Dashboard
 
 A responsive Streamlit dashboard was developed to visualize seller performance and filter data by:
+
+### [Click here to view the live Streamlit app](https://jumia-jitters.streamlit.app/)
+
 
 -  **Customer Region**
 -  **Product Category**
@@ -140,7 +68,7 @@ Sellers using suspiciously short or repetitive high-rated reviews were identifie
 - Delivery Delay by Region  
 - Suspicious Reviews Bar Chart  
 
-(But all visuals are now fully **interactive in Streamlit**)
+> All visuals are  **interactive in Streamlit**
 
 ---
 
@@ -167,18 +95,26 @@ cd YOUR_REPO_NAME
 pip install -r requirements.txt
 
 # 3. Run the Streamlit dashboard
+
 streamlit run dashboard.py
+
 
 Filters and charts will auto-update based on region and product category selections.
 
-##  Live Demo
-
-You can explore the dashboard live here:  
-👉 [Click here to view the live Streamlit app](https://jumia-jitters.streamlit.app/)
 
 
 
- Future Work
+
+
+
+
+
+
+- ** Live Demo **
+- ** Click here to view the live Streamlit app (https://jumia-jitters.streamlit.app/)
+
+
+- ** Future Work **
 Refine fraud detection using deep learning techniques (e.g., transformer-based NLP)
 
 Expand real-time monitoring using Streamlit Cloud or Power BI dashboards
@@ -187,4 +123,7 @@ Develop a periodic audit system for review and seller activity validation
 
 
 
-# THANK YOU. DONE BY AMARACHI FLORENCE
+
+
+- ** THANK YOU **
+Prepared by: Amarachi Florence
