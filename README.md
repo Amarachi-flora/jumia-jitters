@@ -110,8 +110,7 @@ Filters and charts will auto-update based on region and product category selecti
 
 
 
-- ** Live Demo **
-- ** Click here to view the live Streamlit app (https://jumia-jitters.streamlit.app/)
+
 
 
 - ** Future Work **
