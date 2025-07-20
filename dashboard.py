@@ -70,8 +70,10 @@ if not sellers.empty:
     st.plotly_chart(fig1, use_container_width=True)
     st.markdown("""
     **Insight:** These sellers show the highest risk based on complaints, return rates, and delays.  
-    **Recommendation:** Immediate suspension or audit required.
+    **Note:** Although the title says "Top 5", only 3 sellers appear here because only three in the data met the high-risk threshold.  
+    **Recommendation:** Immediate suspension or audit is advised for the listed sellers.  
     """)
+
 
 # 2. Seller Risk Framework (Interactive)
 st.subheader(" Seller Risk Framework (Interactive)")

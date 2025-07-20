@@ -1,4 +1,4 @@
-# Dataverse Africa July Challenge 2025  
+#  Dataverse Africa July Challenge 2025  
 **Theme:** E-Commerce Logistics, Seller Risk Profiling, and Review Fraud Detection  
 **Project Title:** Jumia Jitters  
 
@@ -24,6 +24,8 @@ The dataset includes a detailed snapshot of marketplace activities, with these m
 
 This rich structure gave a solid base for data-driven storytelling and intervention planning.
 
+---
+
 ##  Task 1: Data Cleaning & Feature Engineering
 
 ###  Introduction
@@ -34,7 +36,7 @@ Before any meaningful analysis could happen, I cleaned the data and generated im
 
 From the raw dataset, it became clear that sellers’ behaviors weren’t just about sales, they were tied to how often customers returned items, left complaints, or dropped low ratings. Delivery delays were also not uniformly calculated.
 
-So, I created a **Seller Risk Score**,a weighted combination of:
+So, I created a **Seller Risk Score**, a weighted combination of:
 
 - Return Rate  
 - Complaint Rate  
@@ -46,7 +48,7 @@ This score provided a single number to measure how risky a seller might be.
 
 ###  Recommendations
 
-From this phase, **Jumia Jitters should** start tracking and scoring every seller using a similar risk formula. It makes it easier to spot who’s delivering value—and who’s hurting customer trust.
+From this phase, **Jumia Jitters should** start tracking and scoring every seller using a similar risk formula. It makes it easier to spot who’s delivering value — and who’s hurting customer trust.
 
 ---
 
@@ -78,7 +80,7 @@ A hypothesis test (ANOVA) showed **no significant link between delivery method a
 
 ###  Introduction
 
-In this phase, I trained a machine learning model to predict whether an item would be returned—based on seller behavior, delivery time, customer region, and sentiment analysis.
+In this phase, I trained a machine learning model to predict whether an item would be returned, based on seller behavior, delivery time, customer region, and sentiment analysis.
 
 ###  Modeling Details
 
@@ -116,6 +118,8 @@ To bring the insights to life, I built a fully interactive dashboard with Stream
 - **Seller Risk Framework (Weight Breakdown)**  
 - **Complaint Heatmap (By Region & Category)**  
 - **Fake Review Detection (Short 5-Star Reviews)**  
+
+> **Note:** Although the section title says "Top 5 Sellers to Suspend", only **3 sellers are shown** in the chart because only 3 sellers met the strict suspension threshold based on risk score. The logic ensures accuracy by focusing on truly high-risk profiles rather than filling up the chart arbitrarily.  
 
 ---
 
@@ -176,9 +180,7 @@ Several sellers were flagged for using the same short review text across many 5-
 - `sellers_to_investigate.csv`  
 - `dashboard.py`  
 - `requirements.txt`  
-- `logs/output_log.txt` 
-
-
+- `logs/output_log.txt`  
 
 ---
 
@@ -200,7 +202,7 @@ streamlit run dashboard.py
 
 The app includes region/category filters and interactive charts for easy navigation and decision-making.
 
-  Future Work
+Future Work
 Refine fraud detection with transformer-based NLP
 
 Build live monitoring dashboards via Streamlit Cloud or Power BI

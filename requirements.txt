@@ -4,8 +4,7 @@ numpy
 matplotlib
 seaborn
 scikit-learn
-imblearn
+imbalanced-learn
 openpyxl
-streamlit
-pandas
+
 plotly

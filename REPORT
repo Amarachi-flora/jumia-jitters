@@ -1,0 +1,189 @@
+# JUMIA JITTERS – Technical Report  
+**Dataverse Africa July Challenge 2025**  
+**By Amarachi Florence**  
+
+---
+
+## INTRODUCTION  
+The Dataverse Africa July Challenge aimed to address critical issues faced by **AfriMarket**, a fictional e-commerce platform, experiencing rising customer dissatisfaction due to complaints, fake reviews, slow deliveries, and unreliable sellers. As a Data Intelligence Officer, my mission was to analyze the marketplace data, identify fraudulent patterns, and recommend a seller trust framework to restore customer confidence in Nigeria and Ghana.
+
+---
+
+## DATASET OVERVIEW  
+The analysis utilized a three-month log of marketplace activity, encompassing various attributes:
+
+- **Order ID:** Unique transaction identifier  
+- **Order Date, Dispatch Date, Delivery Date:** Timestamps for key order phases  
+- **Seller ID:** Unique code for each seller  
+- **Product Category:** Types of products sold (e.g., Electronics, Fashion)  
+- **Price and Quantity:** Price per unit and quantity ordered  
+- **Warehouse Zone:** Origin of shipment (e.g., Lagos, Accra)  
+- **Customer Rating:** Rating scale from 1 to 5  
+- **Review Text:** Optional customer feedback  
+- **Sentiment Score:** Derived from review text  
+- **Return Flag:** Indicator if the item was returned  
+- **Complaint Code:** Type of complaint (e.g., Late Delivery)  
+- **Delivery Method:** Options such as Express or Standard  
+- **Customer Region:** Broad location of customers  
+
+---
+
+## METHODOLOGY  
+The entire workflow covered:
+
+### 🔹 Data Cleaning  
+- Standardized formats  
+- Handled missing values  
+- Flagged suspicious reviews by length and duplication  
+
+### 🔹 Feature Engineering  
+- Delivery delay  
+- Seller-level metrics: return rates, average ratings, complaint rates  
+- Seller Risk Score combining all risk indicators  
+
+### 🔹 Predictive Modeling  
+- Built a **Random Forest Classifier**  
+- Addressed class imbalance using **SMOTE**  
+- Tracked metrics like AUC, Precision, Recall  
+
+### 🔹 Visual Analytics  
+- Uncovered complaint/delay patterns using charts  
+- Conducted ANOVA test for delivery method impact  
+
+---
+
+## TASK 1: DATA CLEANING & FEATURE ENGINEERING  
+
+### Objective  
+This task was all about preparing the data for deeper analysis. It included cleaning inconsistent entries, filling in blanks, and engineering new features like delivery delays and risk scores.
+
+### Outcome  
+The major highlight here was the creation of a **Seller Risk Score** — a single number that combines return rate, complaint rate, delay, and review issues.  
+
+> From this step, AfriMarket can begin automatically scoring all sellers — helping to catch potential problems before they affect customers.
+
+---
+
+## TASK 2: PATTERN SURVEILLANCE  
+
+### Objective  
+This task explored patterns in the dataset using charts and statistics. I also tested whether delivery method impacts ratings.
+
+### Key Insights  
+- **Standard & Express** delivery methods dominate → optimization focus  
+- **Fashion & Electronics** triggered the most complaints → audit priority  
+- **Lagos & Greater Accra** drive high order volume — and delays  
+- Fake review patterns detected using short text and duplication  
+
+### Hypothesis Test  
+ANOVA test results:  
+**F-statistic = 0.87, P-value = 0.418**  
+ Conclusion: Delivery method does **not** significantly affect customer ratings.
+
+---
+
+## TASK 3: PREDICTION & RISK MODELING  
+
+### Objective  
+Build a predictive model to flag products likely to be returned — helping the trust & safety team respond proactively.
+
+### Model Used  
+- **Random Forest Classifier**  
+- **AUC Score:** 0.8588  
+- **SMOTE** handled class imbalance  
+
+### Performance  
+- **Precision:** 0.99 (No Return), 1.00 (Return)  
+- **Recall:** 1.00 (No Return), 0.67 (Return)  
+- **Confusion Matrix:** 294 TN, 4 TP  
+
+### High-Risk Sellers Identified  
+| Seller ID | Average Return Risk |
+|-----------|---------------------|
+| S014      | 0.90                |
+| S041      | 0.89                |
+| S018      | 0.86                |
+
+These sellers had high return probability despite positive reviews — a sign of review fraud masking deeper issues.
+
+---
+
+## TASK 4: STRATEGY, DASHBOARD & RESOLUTION  
+
+### Overview  
+I built an interactive **Streamlit dashboard** for real-time seller profiling and filtering. The dashboard includes:
+
+- Top 5 Risky Sellers to Suspend  
+- Complaint Heatmaps  
+- Region/Product filters  
+- Fake Review Detectors  
+- Seller Risk Framework breakdown  
+
+###  Why Only 3 Sellers Showed Instead of 5  
+Although the dashboard is labeled **"Top 5 Sellers to Suspend"**, only **3 sellers were shown**.  
+That’s because only three sellers in the cleaned and scored data actually met the **risk threshold** required to appear on the chart. Rather than force-fill the chart with lower-risk sellers, I kept it accurate — so what you see are **only the true high-risk cases**.
+
+---
+
+### Strategic Recommendations  
+
+1. **Seller Suspension & Monitoring**  
+   - Suspend top risky sellers like `S014`, `S041`, `S018`  
+   - Track borderline sellers over time
+
+2. **Blacklist High-Complaint Categories**  
+   - Health, Electronics, Fashion, Toys, Groceries  
+   - Run supplier audits in these categories  
+
+3. **Delivery Delay Fixes**  
+   - Reassign underperforming warehouses  
+   - Enforce strict seller dispatch timelines  
+
+4. **Customer Trust Policy**  
+   - Transparent seller performance history  
+   - 100% return guarantees  
+   - 24/7 multilingual support  
+
+5. **Review Fraud Detection**  
+   - Flag duplicate and short 5-star reviews  
+   - Use this as part of risk scoring going forward  
+
+---
+
+## BUSINESS CURVEBALLS HANDLED  
+
+### 1. Lagos Delay Data Issue  
+Some Lagos warehouse data was unreliable due to overcapacity.  
+ Solution: Delivery delay from Lagos was **excluded** from average delay calculations.
+
+### 2. Fake Review Pattern  
+Some sellers had unusually short, duplicated 5-star reviews.  
+ Solution: Reviews under 15 characters were flagged and incorporated into seller risk score.
+
+---
+
+## MODEL VISUALS (Backup `.png`)  
+- Seller/Product Risk Dashboard  
+- Seller Risk Framework  
+- Complaint Heatmap  
+- Suspicious Reviews Chart  
+- Top Risk Sellers  
+
+---
+
+## CONCLUSION  
+This project provided hands-on exposure to solving real e-commerce issues: late deliveries, fake reviews, and risky sellers. Through data cleaning, predictive modeling, and visual analytics, I was able to surface key weaknesses and suggest data-backed strategies.
+
+The **Seller Risk Score** turned out to be the game changer — unifying multiple risk factors into a single actionable metric.
+
+---
+
+## FUTURE WORK  
+- Apply **transformer-based NLP** for smarter fraud detection  
+- Build a live dashboard pipeline with **Streamlit Cloud**  
+- Automate seller audits and feedback collection monthly  
+
+---
+
+**Prepared by:** Amarachi Florence  
+For the **Dataverse Africa July Challenge 2025**  
